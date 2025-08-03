@@ -1,0 +1,107 @@
+{
+    "cards": [
+        {
+            "id": 0,
+            "title": "Pomo Dorado",
+            "description": "POMO DORADO",
+            "image": [
+                "https://res.cloudinary.com/dvy9qircy/image/upload/v1749887873/forex/forex_academy_professional_PomosDoradoCT.jpg",
+                "url2"
+            ],
+            "alt": "url",
+            "cardDetail": "POMO DE CAMBIOS RENAULT TWINGO DORADO CASA DEL TWINGO",
+            "brand": "Renault",
+            "clasification": [
+                "Pomos"
+                
+            ],
+            "model": ""
+        },
+        {
+            "id": 1,
+            "title": "Pomo Azul",
+            "description": "POMO AZUL",
+            "image": [
+                "https://res.cloudinary.com/dvy9qircy/image/upload/v1749889594/forex/forex_academy_professional_PomosAZULCT.jpg",
+                "url2"
+            ],
+            "alt": "url",
+            "cardDetail": "POMO DE CAMBIOS RENAULT TWINGO AZUL CASA DEL TWINGO",
+            "brand": "Renault",
+            "clasification": [
+                "Pomos"
+                
+            ],
+            "model": ""
+        },
+        {
+            "id": 2,
+            "title": "card2",
+            "description": "description card2",
+            "image": [
+                "url1",
+                "url2"
+            ],
+            "alt": "url",
+            "cardDetail": "description CardDetail2",
+            "brand": "Iveco",
+            "clasification": [
+                "clasificacion I",
+                "clasificacion II"
+            ],
+            "model": ""
+        },
+        {
+            "id": 3,
+            "title": "card3",
+            "description": "description card3",
+            "image": [
+                "url1",
+                "url2"
+            ],
+            "alt": "url",
+            "cardDetail": "description CardDetail3",
+            "brand": "Marca2",
+            "clasification": [
+                "clasificacion I",
+                "clasificacion II"
+            ],
+            "model": ""
+        },
+        {
+            "id": 4,
+            "title": "Motor Cummins 8.3",
+            "description": "Bomba De Agua Para Ford Camiones Motor Cummins 8.3 6 Cil.",
+            "image": [
+                "https://res.cloudinary.com/dvy9qircy/image/upload/v1749685625/forex/forex_academy_professional_BOMBAAGUAFORD1.jpg",
+                "url2"
+            ],
+            "alt": "url",
+            "cardDetail": "Bomba De Agua Para Ford Camiones Motor Cummins 8.3 6 Cil.",
+            "brand": "Ford",
+            "clasification": [
+                "Bombas Agua",
+                "Mecanica"
+            ],
+            "model": ""
+        }
+    ],
+    "brands": [
+        {"text":"Cummins","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749593471/forex/forex_academy_professional_cummminsv3.png"},
+        {"text":"Ford","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749593603/forex/forex_academy_professional_fordv3.png"},
+        {"text":"Iveco","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749593686/forex/forex_academy_professional_ivecov3.png"},
+        {"text":"Mercedes Benz","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749593753/forex/forex_academy_professional_mercedesV3.png"},
+        {"text":"Renault","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749592146/forex/forex_academy_professional_Renault.png"},
+        {"text":"Scania","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749592449/forex/forex_academy_professional_scaniav2.png"},
+        {"text":"Volkswagen","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749593121/forex/forex_academy_professional_volkswagen.png"},
+        {"text":"Volvo","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749593249/forex/forex_academy_professional_volvo.png"}
+    ],
+    "clasification":[
+        {"text":"Pomos","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749887806/forex/forex_academy_professional_PomosCasaDelTwingov2.png"},
+        {"text":"Sensores","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749681754/forex/forex_academy_professional_sensoresstdv2.png"},
+        {"text":"Bombas Agua","image":"https://res.cloudinary.com/dvy9qircy/image/upload/v1749677144/forex/forex_academy_professional_bombasaguav2.png"},
+        {"text":"Mecanica","image":""},
+        {"text":"Carroceria","image":""},
+        {"text":"clasificacion II","image":""}
+    ]
+}
