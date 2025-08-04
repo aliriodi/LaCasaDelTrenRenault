@@ -5,17 +5,17 @@ const BannerCasaDelTwingo = () => {
         <div className="md:pl-6 lg:pl-6 w-full md:w-1/2 text-center md:text-left mt-6 md:mt-0">
   <h2 className="text-2xl md:text-4xl font-bold text-gray-100 leading-tight">
        {/* Donde termina la búsqueda, empieza el camino. */}
-       La Casa del Twingo: especialistas en Renault.
+       La Casa del Tren Renault.
   </h2>
-  <p className="mt-2 text-lg font-semibold text-gray-700">
-    {/* Todo para tu Twingo, en un solo lugar. */}
-    Aunque empezamos con el Twingo, hoy ofrecemos mucho más. 
+  <p className="mt-2 text-lg  text-gray-700">
+  En <strong>La Casa del Tren Renault</strong> somos especialistas 
+  en <strong>diagnóstico, reparación y provisión de repuestos</strong> para el tren
+  delantero de toda la línea Renault.
+ 
   </p>
   <p className="mt-4 text-gray-700 text-base md:text-lg">
-    {/* En <strong>La Casa del Twingo</strong>, somos especialistas. Más de <strong>10 años de experiencia</strong> ofreciendo <strong>repuestos, accesorios y asesoramiento</strong> exclusivo para Renault Twingo. Conocemos cada detalle de tu auto, porque es nuestra pasión. */}
-    En <strong> La Casa del Twingo</strong>  encontrarás 
-    repuestos y accesorios seleccionados para toda la línea Renault:  <strong>Clio, Logan, 
-    Symbol, Megane y más.</strong>  Conocemos cada detalle de tu auto, 
+     En <strong> La Casa del Tren Renault</strong>  ofrecemos soluciones completas para 
+      <strong>Clio, Logan, Sandero, Kangoo, Symbol, Megane, Duster y más. </strong>  Conocemos cada detalle de tu auto, 
     porque es nuestra pasión.     
   </p>
 </div>
