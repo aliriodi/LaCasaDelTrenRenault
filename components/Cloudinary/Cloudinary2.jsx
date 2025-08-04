@@ -23,7 +23,7 @@ export default function CloudinaryUploader({ imageurl, name , input}) {
       const formData = new FormData();
       formData.append('file', file);
       formData.append("upload_preset", process.env.NEXT_PUBLIC_UPLOAD_PRESET);
-      name ?formData.append('public_id', 'La_casa_del_twingo' + name) :formData.append('public_id', 'Shiva_Camiones_' + nombre);
+      name ?formData.append('public_id', 'La_casa_del_twingo' + name) :formData.append('public_id', 'La_casa_del_tren_Renault' + nombre);
 
       // Send the FormData to Cloudinary
       const response = await fetch("https://api.cloudinary.com/v1_1/" + process.env.NEXT_PUBLIC_CLOUDINARY_NAME + "/upload", {

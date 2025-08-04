@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* <div className="text-2xl font-bold">Mi Sitio</div> */}
         <div></div>
-        <img src="https://res.cloudinary.com/dvy9qircy/image/upload/v1748858266/forex/forex_academy_professional_logo-casatwingov2.png" alt="Logo" className="h-20 w-auto" />
+        <img src="https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754261997/La_casa_del_tren_RenaultlogoHeber.jpg" alt="Logo" className="h-20 w-auto" />
 
         {/* Botón hamburguesa */}
         <div className="md:hidden">
