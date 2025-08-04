@@ -8,7 +8,7 @@ import CardSliderV2 from '@/components/CardSliderV2';
 // import Footer from '@/components/Footer'; // Descomentá si lo usás
 import { Geist, Geist_Mono } from 'next/font/google';
 import Head from 'next/head';
-import { useState } from 'react';
+import React,{ useState } from 'react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export default function Home(): JSX.Element {
+export default function Home(): React.JSX.Element {
   const [powerOn, setPowerOn] = useState<boolean>(false);
 
   return (
