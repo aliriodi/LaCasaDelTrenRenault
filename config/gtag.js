@@ -1,4 +1,4 @@
-export const GA_TRACKING_ID = 'G-6VJWRNGVXP';
+export const GA_TRACKING_ID = 'G-QYTN3L7T54';
 export const GA_TRACKING_ID2 = 'GT-MR5D2QQ';
 
 export const pageview = url => {
