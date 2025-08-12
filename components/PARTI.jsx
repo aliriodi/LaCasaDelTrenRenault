@@ -15,8 +15,9 @@ const BannerCasaDelTwingo = () => {
   </p>
   <p className="mt-4 text-gray-700 text-base md:text-lg">
      En <strong> La Casa del Tren Renault</strong>  ofrecemos soluciones completas para 
-      <strong>Clio, Logan, Sandero, Kangoo, Symbol, Megane, Duster y más. </strong>  Conocemos cada detalle de tu auto, 
-    porque es nuestra pasión.     
+      <strong> Clio, Logan, Sandero, Kangoo, Symbol, Megane, Duster y más. </strong>  
+      Como cuidamos a tu vehiculo como nadie tenemos el servicio de 
+      <strong> Escaner gratuito.</strong>
   </p>
 </div>
   

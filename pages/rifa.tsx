@@ -5,7 +5,8 @@ function Rifa() {
     'https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271709/La_casa_del_tren_RenaultSOMBRERO.webp',
     'https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271765/La_casa_del_tren_RenaultArepa.jpg',
     'https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271786/La_casa_del_tren_RenaultBandera.jpg',
-    'https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271813/La_casa_del_tren_Renaulttostonxito.png'
+    'https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271813/La_casa_del_tren_Renaulttostonxito.png',
+    'https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754958299/La_casa_del_tren_RenaultBANDERAS1RIFA.jpg'
   ];
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
