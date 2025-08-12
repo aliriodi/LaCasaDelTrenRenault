@@ -2,11 +2,12 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-// Rifa tipo "ruleta" con INVENTARIO por cantidades
-// - Define cada premio una sola vez con su `qty`
-// - Si desactivas "Permitir repeticiones", se descuenta del inventario hasta agotar
-// - Si activas "Permitir repeticiones", NO descuenta, pero respeta la probabilidad según qty
-// - Ubica este archivo en app/rifa/page.tsx y habilita Cloudinary en next.config.js
+// Rifa tipo "ruleta" con:
+// - Inventario por cantidades (probabilidad ponderada por qty)
+// - Previsualización: cartas antes y después del ganador
+// - Fades en bordes
+// - Highlight verde (glow) en la carta GANADORA
+// - Indicadores con flechas arriba/abajo en el centro
 
 const INVENTORY_INIT = [
   { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271709/La_casa_del_tren_RenaultSOMBRERO.webp", label: "Sombrero", qty: 2 },
@@ -26,18 +27,18 @@ export default function Rifa() {
   const [spinning, setSpinning] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Reel (pista con muchas cartas para simular el paso)
-  // Usamos solo los ítems de base como visual del carrusel
+  // Reel visual
   const [reel, setReel] = useState<Item[]>(INVENTORY_INIT);
+  const [winnerReelIndex, setWinnerReelIndex] = useState<number | null>(null);
 
-  // Medidas para cálculo de desplazamiento
+  // Medidas
   const containerRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const firstCardRef = useRef<HTMLDivElement | null>(null);
 
   const [containerW, setContainerW] = useState(0);
   const [cardW, setCardW] = useState(0);
-  const GAP = 12; // px (debe coincidir con gap-3)
+  const GAP = 12; // px (gap-3)
 
   useLayoutEffect(() => {
     const measure = () => {
@@ -50,7 +51,7 @@ export default function Rifa() {
   }, []);
 
   useEffect(() => {
-    // Pre-carga ligera de imágenes
+    // Pre-carga
     inventory.forEach((it) => {
       const i = new window.Image();
       i.src = it.src;
@@ -64,6 +65,7 @@ export default function Rifa() {
     setInventory(INVENTORY_INIT);
     setHistory([]);
     setWinner(null);
+    setWinnerReelIndex(null);
     setError(null);
     setReel(INVENTORY_INIT);
     if (trackRef.current) {
@@ -72,7 +74,7 @@ export default function Rifa() {
     }
   };
 
-  // Selección ponderada por qty (solo considera qty > 0)
+  // Selección ponderada por qty (solo qty>0)
   const pickWeightedIndex = (arr: Item[]) => {
     const total = arr.reduce((s, it) => s + Math.max(0, it.qty), 0);
     if (total <= 0) return -1;
@@ -87,7 +89,6 @@ export default function Rifa() {
   const draw = () => {
     if (spinning) return;
 
-    // Fuente de selección: inventario actual (respeta pesos). Si allowRepeats=false, descontamos al final.
     const idx = pickWeightedIndex(inventory);
     if (idx === -1) {
       setError("Inventario agotado. Reinicia o ajusta cantidades.");
@@ -101,35 +102,41 @@ export default function Rifa() {
     const baseRaw = allowRepeats ? inventory : inventory.filter((it) => it.qty > 0);
     const base = (baseRaw.length ? baseRaw : inventory).map(({ src, label }) => ({ src, label, qty: 1 }));
 
-    const rounds = 7; // ajusta para duración
+    const rounds = 6; // vueltas previas
     const longReel: Item[] = [];
     for (let r = 0; r < rounds; r++) longReel.push(...base);
 
-    // Colocar el ganador en el REEL, pero con "cola" a la derecha para que no quede vacío
-    const tailCount = Math.min(5, Math.max(1, base.length - 1));
+    // Visibilidad antes/después
+    const baseLen = Math.max(1, base.length);
     const winnerBaseIdx = base.findIndex((b) => b.src === choice.src);
 
-    // Pre-head opcional para variar (evita que ganador quede justo al final del loop)
-    const baseLen = base.length || 1;
-    const preHead = Math.min(3, baseLen);
-    longReel.push(...base.slice(0, preHead));
+    const effectiveCardSpan = (cardW || 180) + GAP;
+    const approxVisible = Math.max(2, Math.floor(containerW / effectiveCardSpan));
+    const leftCount = Math.min(3, Math.max(1, Math.floor((approxVisible - 1) / 2))); // antes del ganador
+    const rightCount = Math.min(5, Math.max(1, approxVisible)); // después del ganador
+
+    // Pre-head (cartas antes del ganador)
+    for (let j = leftCount; j >= 1; j--) {
+      const idxInBase = baseLen > 1 && winnerBaseIdx !== -1 ? (winnerBaseIdx - j + baseLen) % baseLen : 0;
+      const candidate = base[idxInBase];
+      longReel.push({ src: candidate.src, label: candidate.label, qty: 1 });
+    }
 
     // Índice del ganador dentro del reel largo
     const winnerIndex = longReel.length;
     longReel.push({ src: choice.src, label: choice.label, qty: 1 });
 
-    // Construir cola de "otras opciones válidas" a la derecha del ganador
-    const tail: Item[] = [];
-    for (let j = 1; j <= tailCount; j++) {
+    // Cola (cartas después del ganador)
+    for (let j = 1; j <= rightCount; j++) {
       const idxInBase = baseLen > 1 && winnerBaseIdx !== -1 ? (winnerBaseIdx + j) % baseLen : 0;
       const candidate = base[idxInBase];
-      tail.push({ src: candidate.src, label: candidate.label, qty: 1 });
+      longReel.push({ src: candidate.src, label: candidate.label, qty: 1 });
     }
-    longReel.push(...tail);
 
     setReel(longReel);
     setSpinning(true);
     setWinner(null);
+    setWinnerReelIndex(winnerIndex);
 
     requestAnimationFrame(() => {
       if (!trackRef.current) return;
@@ -138,11 +145,10 @@ export default function Rifa() {
       // @ts-ignore
       void trackRef.current.offsetHeight;
 
-      const effectiveCardSpan = cardW + GAP; // ancho de carta + gap
-      const centerOffset = Math.max(0, (containerW - cardW) / 2);
+      const centerOffset = Math.max(0, (containerW - (cardW || 180)) / 2);
       const targetPx = Math.max(0, winnerIndex * effectiveCardSpan - centerOffset);
 
-      const durationMs = 3600; // 3.6s
+      const durationMs = 3800;
       trackRef.current.style.transition = `transform ${durationMs}ms cubic-bezier(0.12, 0.8, 0.08, 1)`;
       trackRef.current.style.transform = `translate3d(-${targetPx}px, 0, 0)`;
 
@@ -151,7 +157,6 @@ export default function Rifa() {
         setWinner(choice);
         setHistory((h) => [choice.src, ...h]);
         if (!allowRepeats) {
-          // Descontar 1 unidad del premio
           setInventory((inv) => inv.map((it, i) => (i === idx ? { ...it, qty: Math.max(0, it.qty - 1) } : it)));
         }
         trackRef.current?.removeEventListener("transitionend", onEnd);
@@ -187,20 +192,60 @@ export default function Rifa() {
 
           {/* Ventana de la ruleta */}
           <div ref={containerRef} className="mt-5 relative overflow-hidden rounded-xl border bg-gray-50">
-            {/* Indicador centrado */}
+            {/* Indicador centrado (línea + flechas arriba/abajo) */}
             <div className="pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 w-0.5 bg-yellow-500/80" />
+            {/* Flecha superior (apunta hacia abajo) */}
+            <div className="pointer-events-none absolute bottom-1  left-1/2 -translate-x-1/2">
+              <div
+                className="w-0 h-0"
+                style={{
+                  borderLeft: "10px solid transparent",
+                  borderRight: "10px solid transparent",
+                  borderBottom: "14px solid rgba(234,179,8,0.9)",
+                  filter: "drop-shadow(0 2px 2px rgba(0,0,0,0.25))",
+                }}
+              />
+            </div>
+            {/* Flecha inferior (apunta hacia arriba) */}
+            <div className="pointer-events-none absolute top-1 left-1/2 -translate-x-1/2">
+              <div
+                className="w-0 h-0"
+                style={{
+                  borderLeft: "10px solid transparent",
+                  borderRight: "10px solid transparent",
+                  borderTop: "14px solid rgba(234,179,8,0.9)",
+                  filter: "drop-shadow(0 -2px 2px rgba(0,0,0,0.25))",
+                }}
+              />
+            </div>
+
+            {/* Fades de los bordes */}
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-50 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-50 to-transparent" />
+            
 
             {/* Pista */}
             <div ref={trackRef} className="flex items-center gap-3 p-4 will-change-transform">
-              {reel.map((it, i) => (
-                <div
-                  key={`${it.src}-${i}`}
-                  ref={i === 0 ? firstCardRef : undefined}
-                  className="relative w-[clamp(140px,45vw,220px)] aspect-[3/4] shrink-0 rounded-xl overflow-hidden bg-white shadow"
-                >
-                  <Image src={it.src} alt={`card-${i}`} fill sizes="(max-width: 768px) 45vw, 220px" className="object-cover" />
-                </div>
-              ))}
+              {reel.map((it, i) => {
+                const isWinnerCard = winnerReelIndex !== null && i === winnerReelIndex && !spinning;
+                return (
+                  <div
+                    key={`${it.src}-${i}`}
+                    ref={i === 0 ? firstCardRef : undefined}
+                    className={`relative w-[clamp(140px,45vw,220px)] aspect-[3/4] shrink-0 rounded-xl overflow-hidden bg-white shadow transition-transform ${isWinnerCard ? 'scale-100 z-20' : ''}`}
+                  >
+                    {/* Glow verde detrás de la imagen cuando es ganador */}
+                    {isWinnerCard && (
+                      <div className="absolute inset-10 rounded-xl " style={{
+                        boxShadow: "0 0 0 4px rgba(16,185,129,0.45), 0 0 300px 100px rgba(16,185,129,0.35)",
+                        background: "radial-gradient(ellipse at center, rgba(16,185,129,0.18), transparent 10%)",
+                        zIndex: 1,
+                      }} />
+                    )}
+                    <Image src={it.src} alt={`card-${i}`} fill sizes="(max-width: 768px) 45vw, 2020px" className="object-cover  relative z-10" />
+                  </div>
+                );
+              })}
             </div>
           </div>
 
