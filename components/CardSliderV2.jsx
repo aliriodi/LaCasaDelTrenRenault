@@ -7,21 +7,21 @@ const cards = [
     title: "Calidad Garantizada:",
     image: "https://res.cloudinary.com/dvy9qircy/image/upload/v1748722749/forex/forex_academy_professional_100QAv2.jpg",
     description: "Trabajamos directamente con <strong>Renault</strong> para asegurarnos de que obtengas solo lo mejor.",
-    imagebg: "https://res.cloudinary.com/dvy9qircy/image/upload/v1748862295/forex/forex_academy_professional_twingoCardSlider5.jpg",
+    imagebg: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754261997/La_casa_del_tren_RenaultlogoHeber.jpg",
   },
   {
     id: 2,
     title: "Asesoría Especializada:",
-    image: "https://res.cloudinary.com/dvy9qircy/image/upload/v1748865660/forex/forex_academy_professional_twingo5.png",
-    description: "Nuestro equipo de expertos está listo para ayudarte a encontrar la pieza perfecta para tus necesidades.",
-    imagebg: "https://res.cloudinary.com/dvy9qircy/image/upload/v1748862588/forex/forex_academy_professional_twingoCardSlider.jpg",
+    image: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754940597/La_casa_del_tren_RenaultservivioEspecializadoTR.jpg",
+    description: "Nuestro equipo de expertos está listo para ayudarte a encontrar la pieza perfecta para tu <strong>tren delantero Renault</strong>.",
+    imagebg: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754943528/La_casa_del_tren_Renaultbg2Tren.png",
   },
   {
     id: "3",
     title: "Precios Competitivos:",
-    image: "https://res.cloudinary.com/dvy9qircy/image/upload/v1748867271/forex/forex_academy_professional_repuestosTwingo.jpg",
-    description: "Ofrecemos los mejores precios del mercado. Tu <strong>Renault</strong> esta en buenas manos.",
-    imagebg: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1751930200/Shiva_Camiones_clio2.jpg",
+    image: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754856453/La_casa_del_tren_RenaultMejorCaldiad.jpg",
+    description: "Ofrecemos los mejores precios del mercado. Tu <strong>tren delantero Renault</strong> esta en buenas manos.",
+    imagebg: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754941394/La_casa_del_tren_Renaultbg1Tren.jpg",
   },
 ];
 
