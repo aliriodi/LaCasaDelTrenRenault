@@ -181,7 +181,7 @@ export default function Rifa() {
               <input
                 type="checkbox"
                 className="toggle toggle-sm"
-                checked={allowRepeats}
+            //    checked={allowRepeats}
             //    onChange={(e) => setAllowRepeats(e.target.checked)}
               />
               Permitir repeticiones (no descuenta)
