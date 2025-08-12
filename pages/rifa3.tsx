@@ -20,7 +20,7 @@ const INVENTORY_INIT = [
 type Item = { src: string; label?: string; qty: number };
 
 export default function Rifa() {
-  const [allowRepeats, setAllowRepeats] = useState(true);
+  const [allowRepeats, setAllowRepeats] = useState(false);
   const [inventory, setInventory] = useState<Item[]>(INVENTORY_INIT);
   const [history, setHistory] = useState<string[]>([]);
   const [winner, setWinner] = useState<Item | null>(null);
