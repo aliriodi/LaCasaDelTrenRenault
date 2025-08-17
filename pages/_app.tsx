@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div>
       <Head>
-        <title>Casa del Twingo</title>
+        <title>Casa del Tren Renault</title>
       </Head>
 
       <Component {...pageProps} />
