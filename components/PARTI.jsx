@@ -24,9 +24,11 @@ const BannerCasaDelTwingo = () => {
         {/* Imagen del camión */}
         <div className="w-full md:w-1/2 flex justify-center">
           <img
-           // src="https://res.cloudinary.com/dvy9qircy/image/upload/v1748861153/forex/forex_academy_professional_twingo1.jpg"
-           src="https://res.cloudinary.com/dnrkfwzwp/image/upload/v1751928337/Shiva_Camiones_megane.webp"
-            alt="Vehiculo "
+            //src="https://res.cloudinary.com/dvy9qircy/image/upload/v1748861153/forex/forex_academy_professional_twingo1.jpg"
+           //src="https://res.cloudinary.com/dnrkfwzwp/image/upload/v1751928337/Shiva_Camiones_megane.webp"
+           //src='https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755435460/La_casa_del_tren_RenaulttrendelanteroPage.webp'
+           src='https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755435943/La_casa_del_tren_Renaulttrendelanterv2Page.png' 
+           alt="Vehiculo "
             className="w-70 md:w-92 h-auto object-contain rounded-lg shadow-lg "
           />
         </div>

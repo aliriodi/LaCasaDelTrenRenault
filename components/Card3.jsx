@@ -5,16 +5,16 @@ function Card3() {
         {
             id: 1,
             title: "Disponibilidad Inmediata:",
-            image: "https://res.cloudinary.com/dvy9qircy/image/upload/v1748911157/forex/forex_academy_professional_disponibilidadInmediataTWINGO.png",
+            image: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754943528/La_casa_del_tren_Renaultbg2Tren.png",
             description: "Contamos con stock constante de piezas claves para mantener tu <strong>Reanult</strong> siempre en marcha.",
             style: 'STATIC',
         },
         {
             id: 2,
             title: "Confianza que Rueda:",
-            image: "https://res.cloudinary.com/dvy9qircy/image/upload/v1748910066/forex/forex_academy_professional_CONFIANZAQUERUEDA3.png",
+            image: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754940597/La_casa_del_tren_RenaultservivioEspecializadoTR.jpg",
             description: "Clientes de todo el país nos eligen por nuestra seriedad, responsabilidad y atención cercana.",
-            style: 'MOVE',
+            style: 'STATIC',
         },
         {
             id: "Servicios",
