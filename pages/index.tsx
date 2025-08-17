@@ -8,7 +8,7 @@ import CardSliderV2 from '@/components/CardSliderV2';
 // import Footer from '@/components/Footer'; // Descomentá si lo usás
 import { Geist, Geist_Mono } from 'next/font/google';
 import Head from 'next/head';
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -68,7 +68,8 @@ export default function Home(): React.JSX.Element {
                   className="rounded-xl"
                 ></iframe>
               </div>
-
+              {/* Fin de Mapa */}
+              
               <div className="bg-yellowPrimary rounded-xl">
                 {/* <Footer /> */}
               </div>
