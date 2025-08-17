@@ -10,11 +10,13 @@ import Image from "next/image";
 // - Indicadores con flechas arriba/abajo en el centro
 
 const INVENTORY_INIT = [
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271709/La_casa_del_tren_RenaultSOMBRERO.webp", label: "Sombrero", qty: 2 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271709/La_casa_del_tren_RenaultSOMBRERO.webp", label: "Sombrero", qty: 4 },
   { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271765/La_casa_del_tren_RenaultArepa.jpg", label: "Arepa", qty: 3 },
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271786/La_casa_del_tren_RenaultBandera.jpg", label: "Bandera", qty: 10 },
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271813/La_casa_del_tren_Renaulttostonxito.png", label: "Tostón", qty: 4 },
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754958299/La_casa_del_tren_RenaultBANDERAS1RIFA.jpg", label: "Banderas 1", qty: 1 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755442450/La_casa_del_tren_Renaulttest3.jpg", label: "Intente 1 Vez mas", qty: 5 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271786/La_casa_del_tren_RenaultBandera.jpg", label: "Bandera", qty: 2 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271813/La_casa_del_tren_Renaulttostonxito.png", label: "Tostón", qty: 2 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755441892/La_casa_del_tren_Renaulttest2.jpg", label: "Gracias por pariticipar", qty: 6 },
+
 ];
 
 type Item = { src: string; label?: string; qty: number };
@@ -87,8 +89,8 @@ export default function Rifa() {
   };
 
   const draw = () => {
+    setWinner(null);
     if (spinning) return;
-
     const idx = pickWeightedIndex(inventory);
     if (idx === -1) {
       setError("Inventario agotado. Reinicia o ajusta cantidades.");
@@ -171,15 +173,20 @@ export default function Rifa() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+
       <div className="w-full max-w-6xl grid lg:grid-cols-3 gap-6 items-start">
         {/* Panel principal (ocupa 2 columnas en desktop) */}
         <div className="lg:col-span-2 bg-white rounded-2xl shadow p-5">
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start justify-between gap-4">
+            
+            {CreditsBar()}
+            
             <div>
+
               <h1 className="text-2xl font-bold text-yellow-600">🎯 Rifa Venezolana</h1>
               <p className="text-sm text-gray-500">{remainingLabel}</p>
             </div>
-            <label className="flex items-center gap-2 text-sm cursor-pointer select-none">
+            {/* <label className="flex items-center gap-2 text-sm cursor-pointer select-none">
               <input
                 type="checkbox"
                 className="toggle toggle-sm"
@@ -187,13 +194,13 @@ export default function Rifa() {
                 onChange={(e) => setAllowRepeats(e.target.checked)}
               />
               Permitir repeticiones (no descuenta)
-            </label>
+            </label> */}
           </div>
 
           {/* Ventana de la ruleta */}
           <div ref={containerRef} className="mt-5 relative overflow-hidden rounded-xl border bg-gray-50">
             {/* Indicador centrado (línea + flechas arriba/abajo) */}
-            <div className="pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 w-0.5 bg-yellow-500/80" />
+            <div className="pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 w-0.5 bg-red-500" />
             {/* Flecha superior (apunta hacia abajo) */}
             <div className="pointer-events-none absolute bottom-1  left-1/2 -translate-x-1/2">
               <div
@@ -201,7 +208,8 @@ export default function Rifa() {
                 style={{
                   borderLeft: "10px solid transparent",
                   borderRight: "10px solid transparent",
-                  borderBottom: "14px solid rgba(234,179,8,0.9)",
+                  //borderBottom: "14px solid  rgba(220,38,38,0.9)",
+                  borderBottom: "14px solid #0F00FF",
                   filter: "drop-shadow(0 2px 2px rgba(0,0,0,0.25))",
                 }}
               />
@@ -213,16 +221,18 @@ export default function Rifa() {
                 style={{
                   borderLeft: "10px solid transparent",
                   borderRight: "10px solid transparent",
-                  borderTop: "14px solid rgba(234,179,8,0.9)",
+                  //borderTop: "14px solid rgba(220,38,38,0.9)",
+                  borderTop: "14px solid #0F00FF",
                   filter: "drop-shadow(0 -2px 2px rgba(0,0,0,0.25))",
                 }}
               />
             </div>
 
             {/* Fades de los bordes */}
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-50 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-50 to-transparent" />
-            
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white-50 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white-500 to-transparent" />
+
+
 
             {/* Pista */}
             <div ref={trackRef} className="flex items-center gap-3 p-4 will-change-transform">
@@ -232,7 +242,7 @@ export default function Rifa() {
                   <div
                     key={`${it.src}-${i}`}
                     ref={i === 0 ? firstCardRef : undefined}
-                    className={`relative w-[clamp(140px,45vw,220px)] aspect-[3/4] shrink-0 rounded-xl overflow-hidden bg-white shadow transition-transform ${isWinnerCard ? 'scale-100 z-20' : ''}`}
+                    className={`relative w-[clamp(140px,45vw,220px)] aspect-[3/4] shrink-0 rounded-xl bg-white overflow-hidden  shadow transition-transform ${isWinnerCard ? 'scale-100 z-20' : 'scale-90'}`}
                   >
                     {/* Glow verde detrás de la imagen cuando es ganador */}
                     {isWinnerCard && (
@@ -319,6 +329,43 @@ export default function Rifa() {
         input[type="checkbox"].toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: #fff; border-radius: 999px; transition: transform .2s; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
         input[type="checkbox"].toggle:checked::after { transform: translateX(16px); }
       `}</style>
+    </div>
+  );
+}
+
+function CreditsBar() {
+  return (
+    // <div className="fixed top-0  left-0 w-full bg-zinc-900/95 text-white text-sm py-2 px-4 flex items-center justify-center gap-2 shadow-lg z-50">
+    <div className="fixed top-0 left-0 w-full text-white text-sm py-2 px-4 flex items-center justify-center gap-2 shadow-lg z-50 
+bg-gradient-to-r from-yellow-400 via-blue-600 to-red-600">
+    
+      <span>Creado por</span>
+      <div className="relative w-[110px] h-auto">
+        {/* <Image
+          src="/arquicom-aj.png"   // pon el logo en /public
+          alt="Arquicom AJ"
+          fill
+          className="object-contain"
+          sizes="110px"
+        /> */}
+        <span className=""><strong>
+          @Arquicom_AJ
+        </strong></span>
+      </div>
+      <span className="mx-2 opacity-60">•</span>
+      <span>Patrocinado por</span>
+      <div className="relative w-[120px] h-auto">
+        {/* <Image
+          src="/creargood.png"     // pon el logo en /public
+          alt="Creargood"
+          fill
+          className="object-contain"
+          sizes="120px"
+        /> */}
+        <span className=""><strong>
+          @Crear_Good
+        </strong></span>
+      </div>
     </div>
   );
 }
