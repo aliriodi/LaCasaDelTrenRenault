@@ -10,12 +10,25 @@ import Image from "next/image";
 // - Indicadores con flechas arriba/abajo en el centro
 
 const INVENTORY_INIT = [
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271709/La_casa_del_tren_RenaultSOMBRERO.webp", label: "Sombrero", qty: 4 },
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271765/La_casa_del_tren_RenaultArepa.jpg", label: "Arepa", qty: 3 },
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755442450/La_casa_del_tren_Renaulttest3.jpg", label: "Intente 1 Vez mas", qty: 5 },
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271786/La_casa_del_tren_RenaultBandera.jpg", label: "Bandera", qty: 2 },
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1754271813/La_casa_del_tren_Renaulttostonxito.png", label: "Tostón", qty: 2 },
-  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755441892/La_casa_del_tren_Renaulttest2.jpg", label: "Gracias por pariticipar", qty: 6 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755542247/La_casa_del_tren_Renaultpulsera1.jpg", label: "Pulsera 1 venezolana", qty: 21 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755442450/La_casa_del_tren_Renaulttest3.jpg", label: "Intente 1 Vez mas", qty: 10 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755542300/La_casa_del_tren_Renaultpulsera2.jpg", label: "Pulsera 2 venezolana", qty: 16 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755441892/La_casa_del_tren_Renaulttest2.jpg", label: "Gracias por pariticipar", qty: 16 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755543478/La_casa_del_tren_RenaultllaveCG2.jpg", label: "Llavero Crear Good", qty: 1 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755542365/La_casa_del_tren_Renaultpulsera3LLAVERO.jpg", label: "Pulsera Llavero venezolana", qty: 5 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755543496/La_casa_del_tren_RenaultllaveCG3.jpg", label: "Llavero Crear Good", qty: 1 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755732761/La_casa_del_tren_Renaultmalta.jpg", label: "Malta", qty: 6 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755732874/La_casa_del_tren_Renault-Palitos.jpg", label: "Palitos", qty: 3 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755733120/La_casa_del_tren_Renault-Pirulin.jpg", label: "Mini Pirulin", qty: 3 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755733184/La_casa_del_tren_Renault-Toronto.jpg", label: "Toronto", qty: 3 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755543365/La_casa_del_tren_RenaultllaveCG1.jpg", label: "Llavero Crear Good", qty: 1 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755733425/La_casa_del_tren_Renault-Tostonxitos.jpg", label: "Tostonxito", qty: 3 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755733634/La_casa_del_tren_Renault-Uva.jpg", label: "Uva", qty: 4 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755733590/La_casa_del_tren_Renault-Rekolita.jpg", label: "Rekolita", qty: 6 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755733726/La_casa_del_tren_Renault-Dani.jpg", label: "Galletas Dani", qty: 32 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755733890/La_casa_del_tren_Renault-BonBonBun.jpg", label: "Chupetas Bon Bon Bun", qty: 24 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755733948/La_casa_del_tren_Renault-Cocosete.jpg", label: "Cocosete", qty: 3 },
+  { src: "https://res.cloudinary.com/dnrkfwzwp/image/upload/v1755733975/La_casa_del_tren_Renault-Susy.jpg", label: "Susy", qty: 1 },
 
 ];
 
