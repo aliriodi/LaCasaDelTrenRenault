@@ -301,7 +301,8 @@ export default function Rifa() {
         </div>
 
         {/* Inventario / Historial */}
-        <div className="bg-white rounded-2xl shadow p-5 space-y-5">
+        <div className="pt-2">
+        <div className="bg-white rounded-2xl shadow p-5 pt-8 space-y-5">
           <div>
             <h2 className="font-semibold mb-2">Inventario</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -332,7 +333,7 @@ export default function Rifa() {
                 ))}
               </div>
             )}
-          </div>
+          </div></div>
         </div>
       </div>
 
