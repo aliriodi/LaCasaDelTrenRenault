@@ -195,7 +195,7 @@ export default function Rifa() {
             
             {CreditsBar()}
             
-            <div>
+            <div className="pt-4">
 
               <h1 className="text-2xl font-bold text-yellow-600">🎯 Rifa Venezolana</h1>
               <p className="text-sm text-gray-500">{remainingLabel}</p>
