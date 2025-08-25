@@ -362,7 +362,7 @@ bg-gradient-to-r from-yellow-400 via-blue-600 to-red-600">
           className="object-contain"
           sizes="110px"
         /> */}
-        <span className=""><strong>
+        <span className="text-lg"><strong>
           @Arquicom_AJ
         </strong></span>
       </div>
@@ -376,7 +376,7 @@ bg-gradient-to-r from-yellow-400 via-blue-600 to-red-600">
           className="object-contain"
           sizes="120px"
         /> */}
-        <span className=""><strong>
+        <span className="text-lg"><strong>
           @Crear_Good
         </strong></span>
       </div>
