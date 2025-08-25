@@ -195,7 +195,7 @@ export default function Rifa() {
             
             {CreditsBar()}
             
-            <div>
+            <div className="pt-4">
 
               <h1 className="text-2xl font-bold text-yellow-600">🎯 Rifa Venezolana</h1>
               <p className="text-sm text-gray-500">{remainingLabel}</p>
@@ -301,7 +301,8 @@ export default function Rifa() {
         </div>
 
         {/* Inventario / Historial */}
-        <div className="bg-white rounded-2xl shadow p-5 space-y-5">
+        <div className="pt-2">
+        <div className="bg-white rounded-2xl shadow p-5 pt-8 space-y-5">
           <div>
             <h2 className="font-semibold mb-2">Inventario</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -332,7 +333,7 @@ export default function Rifa() {
                 ))}
               </div>
             )}
-          </div>
+          </div></div>
         </div>
       </div>
 
