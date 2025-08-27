@@ -31,12 +31,12 @@ export default function CardDetail() {
             // Ejemplo: const res = await fetch(`/api/data/${id}`);
             // const result = await res.json();
             const resProducts = await fetch('/api/products/get');
-        const productsData = await resProducts.json();
+            const productsData = await resProducts.json();
 
-        const filtered = productsData.product.filter(card => card.brand === brand &&
-            card.clasification.includes(clasifications) &&
-            card._id == product);
-       
+            const filtered = productsData.product.filter(card => card.brand === brand &&
+                card.clasification.includes(clasifications) &&
+                card._id == product);
+
             const imageB1 = cards.brands.filter(brand2 => brand2.text == brand)
             setImagebrand(imageB1[0].image)
             setData(filtered)
@@ -50,23 +50,23 @@ export default function CardDetail() {
             setLoading(false);
 
             // Simulación:
-           /* setTimeout(() => {
-                const filtered = cards.cards.filter(card => card.brand === brand &&
-                    card.clasification.includes(clasifications) &&
-                    card.id == product);
-                //setData({ id, name: `Item ${id}` });
-                const imageB1 = cards.brands.filter(brand2 => brand2.text == brand)
-                setImagebrand(imageB1[0].image)
-                setData(filtered)
-                const uniqueClasifications = [
-                    ...new Set(
-                        filtered
-                            .flatMap(card => card.clasification)
-                    )
-                ];
-                setClasification(uniqueClasifications)
-                setLoading(false);
-            }, 1900);*/
+            /* setTimeout(() => {
+                 const filtered = cards.cards.filter(card => card.brand === brand &&
+                     card.clasification.includes(clasifications) &&
+                     card.id == product);
+                 //setData({ id, name: `Item ${id}` });
+                 const imageB1 = cards.brands.filter(brand2 => brand2.text == brand)
+                 setImagebrand(imageB1[0].image)
+                 setData(filtered)
+                 const uniqueClasifications = [
+                     ...new Set(
+                         filtered
+                             .flatMap(card => card.clasification)
+                     )
+                 ];
+                 setClasification(uniqueClasifications)
+                 setLoading(false);
+             }, 1900);*/
         };
 
         fetchData();
@@ -103,7 +103,15 @@ export default function CardDetail() {
                         )
                         }
                         <div>
-                            {data[0].cardDetail}
+                            <h2 className="text-2xl font-semibold text-green-900 transition-colors duration-300">
+                                {data[0].cardDetail}
+                            </h2>
+                            <h2 className="text-2xl font-semibold text-green-900 transition-colors duration-300">
+                                Cantidad: {card.qty ? card.qty : 0}
+                            </h2>
+                            <h2 className="text-2xl font-semibold text-green-900 transition-colors duration-300">
+                                Precio: {card.price ? card.price : 0} $USD
+                            </h2>
                         </div>
                     </div>
                 </div>

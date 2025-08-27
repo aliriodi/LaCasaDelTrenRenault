@@ -88,6 +88,12 @@ export default function Products() {
                   <h2 className="text-2xl font-semibold text-green-900 transition-colors duration-300">
                     {card.title}
                   </h2>
+                  <h2 className="text-2xl font-semibold text-green-900 transition-colors duration-300">
+                    Cantidad: {card.qty?card.qty:0}
+                  </h2>
+                  <h2 className="text-2xl font-semibold text-green-900 transition-colors duration-300">
+                    Precio: {card.price?card.price:0} $USD
+                  </h2>
                 </a>
               </div>
             ))}
