@@ -21,6 +21,9 @@ function Layout1({ children }) {
             <Head>
                 <link rel="icon" href="/favicon.ico" />
                   {/* SEO básico */}
+                {/*Esta linea es para que el resposive se vea bien tambien */ }
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+
                 <meta name="description" content="Repuestos y accesorios para Renault Twingo, Clio, Logan, Symbol, Megane y más. Atención personalizada, envío rápido y confianza garantizada." />
                 <meta name="keywords" content="repuestos Renault, Renault Twingo, Clio, Logan, Symbol, Megane, accesorios, La Casa del Twiingo, repuestos originales" />
                 <meta name="author" content="La Casa del Tren Renault" />
@@ -47,8 +50,9 @@ function Layout1({ children }) {
 
                     </div>
                     <div className="bg-yellowPrimary ">
-                        <Footer /></div>
+                        </div>
                 </main>
+                <Footer />
             </div>
         </div>
     )
