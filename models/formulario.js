@@ -39,4 +39,4 @@ const FormsSchema = new Schema(
 // error poco frectuente de versionado de modelos por eso etsa esto, pero revisar si puedo armarlo como lo anterior
 const Fomr1 = models.Form1 || model('Forms', FormsSchema)
 
-export default Product
+export default Fomr1

@@ -27,7 +27,13 @@ const ProductsSchema = new Schema(
       },
       model:{
         type: String,
-      }
+      },
+      price:{
+        type: Number,
+      },
+      qty:{
+        type: Number,
+      },
     
   },
   {

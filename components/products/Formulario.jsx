@@ -14,6 +14,8 @@ export default function ProductForm() {
     brand: "",
     clasification: [], // array
     model: "",
+    price: 100,
+    qty: 1
   });
 
   const [loading, setLoading] = useState(false);
@@ -22,13 +24,14 @@ export default function ProductForm() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "description") {
-        setFormData({
-          ...formData,
-          description: value,
-          cardDetail: value,
-        });}
+      setFormData({
+        ...formData,
+        description: value,
+        cardDetail: value,
+      });
+    }
 
-       
+
     // Si es un campo array, lo separamos por coma
     else if (name === "image" || name === "clasification") {
       setFormData({
@@ -54,16 +57,16 @@ export default function ProductForm() {
     setLoading(true);
     setMessage("");
 
-   // convertí la cadena a array antes de enviar
-  const clasificationArray = clasificationInput
-  .split(",")
-  .map((item) => item.trim())
-  .filter((item) => item.length > 0);
+    // convertí la cadena a array antes de enviar
+    const clasificationArray = clasificationInput
+      .split(",")
+      .map((item) => item.trim())
+      .filter((item) => item.length > 0);
 
-const preparedFormData = {
-  ...formData,
-  clasification: clasificationArray,
-};
+    const preparedFormData = {
+      ...formData,
+      clasification: clasificationArray,
+    };
 
     try {
       const response = await fetch("/api/products/add", {
@@ -85,6 +88,8 @@ const preparedFormData = {
         brand: "",
         clasification: [],
         model: "",
+        price: 100,
+        qty: 1
       });
       setClasificationInput("")
     } catch (error) {
@@ -96,33 +101,33 @@ const preparedFormData = {
 
   return (
     // <Layout1>
-      <div className="pt-14">
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-4 p-10 border rounded-xl shadow-md max-w-4xl  mx-auto"
+    <div className="pt-14">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 p-10 border rounded-xl shadow-md max-w-4xl  mx-auto"
 
-          //className="flex flex-col gap-4 p-24 border rounded-xl shadow-md max-w-xl mx-auto"
-        >
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            placeholder="Título"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
-            required
-          />
+      //className="flex flex-col gap-4 p-24 border rounded-xl shadow-md max-w-xl mx-auto"
+      >
+        <input
+          type="text"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+          placeholder="Título"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          required
+        />
 
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            placeholder="Descripción"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
-            required
-          />
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          placeholder="Descripción"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          required
+        />
 
-          {/* <input
+        {/* <input
             type="text"
             name="alt"
             value={formData.alt}
@@ -131,7 +136,7 @@ const preparedFormData = {
             className="input"
           /> */}
 
-          {/* <input
+        {/* <input
             type="text"
             name="cardDetail"
             value={formData.cardDetail}
@@ -140,61 +145,85 @@ const preparedFormData = {
             className="input"
           /> */}
 
-          <input
-            type="text"
-            name="brand"
-            value={formData.brand}
-            onChange={handleChange}
-            placeholder="Marca"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
-            required
-          />
+        <input
+          type="text"
+          name="brand"
+          value={formData.brand}
+          onChange={handleChange}
+          placeholder="Marca"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          required
+        />
 
-          <input
-            type="text"
-            name="clasification"
-           // value={formData.clasification.join(", ")}
-           value={clasificationInput}
-            //onChange={handleChange}
-            onChange={(e) => setClasificationInput(e.target.value)}
-            placeholder="Clasificación (separada por coma)"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
-            required
-          />
+        <input
+          type="text"
+          name="clasification"
+          // value={formData.clasification.join(", ")}
+          value={clasificationInput}
+          //onChange={handleChange}
+          onChange={(e) => setClasificationInput(e.target.value)}
+          placeholder="Clasificación (separada por coma)"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          required
+        />
 
-          <input
-            type="text"
-            name="model"
-            value={formData.model}
-            onChange={handleChange}
-            placeholder="Modelo"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md"
-            required
-          />
+        <input
+          type="text"
+          name="model"
+          value={formData.model}
+          onChange={handleChange}
+          placeholder="Modelo"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          required
+        />
 
-          {/* Mostrar imágenes cargadas */}
-          {formData.image.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {formData.image.map((img, idx) => (
-                <img key={idx} src={img} alt={formData.alt} className="w-24 h-24 object-cover rounded" />
-              ))}
-            </div>
-          )}
+        {/* INPUTS PRECIO Y QTY */}
+        <input
+          type="number"
+          name="price"
+          value={formData.price}
+          onChange={handleChange}
+          placeholder="Precio"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          required
+          min="0"
+          step="1"
+        />
 
-          {/* Widget Cloudinary */}
-          <Cloudinary imageurl={handleImageUpload} name={formData.title} input={false} />
+        <input
+          type="number"
+          name="qty"
+          value={formData.qty}
+          onChange={handleChange}
+          placeholder="Cantidad"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md"
+          required
+          min="0"
+        />
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-          >
-            {loading ? "Guardando..." : "Guardar"}
-          </button>
+        {/* Mostrar imágenes cargadas */}
+        {formData.image.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {formData.image.map((img, idx) => (
+              <img key={idx} src={img} alt={formData.alt} className="w-24 h-24 object-cover rounded" />
+            ))}
+          </div>
+        )}
 
-          {message && <p className="text-sm mt-2 text-center text-gray-700">{message}</p>}
-        </form>
-      </div>
+        {/* Widget Cloudinary */}
+        <Cloudinary imageurl={handleImageUpload} name={formData.title} input={false} />
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+        >
+          {loading ? "Guardando..." : "Guardar"}
+        </button>
+
+        {message && <p className="text-sm mt-2 text-center text-gray-700">{message}</p>}
+      </form>
+    </div>
     // </Layout1>
   );
 }
