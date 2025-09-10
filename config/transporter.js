@@ -14,9 +14,9 @@ export async function getGmailTransporter() {
     service: "gmail",
     auth: {
       type: "OAuth2",
-      user: process.env.GMAIL_USER,   
-      pass: process.env.MAIL_PASSWD,            // MISMA cuenta que autorizaste
+      user: process.env.GMAIL_USER,   // MISMA cuenta que autorizaste
       clientId: process.env.GOOGLE_CLIENT_ID,
+      pass: process.env.MAIL_PASSWD,            
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
       accessToken: accessToken?.token || "",
