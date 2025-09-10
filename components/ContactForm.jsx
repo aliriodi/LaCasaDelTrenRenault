@@ -9,7 +9,7 @@ export default function ContactForm() {
   });
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
-
+  const [MAIL, setMail] = useState(null);
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -36,14 +36,19 @@ export default function ContactForm() {
       });
 
       const data = await res.json();
+
       if (res.ok) {
+        
         setResult({ ok: true, msg: "✅ ¡Correo enviado con éxito!" });
       } else {
         setResult({ ok: false, msg: "❌ Error: " + data.error });
+        
       }
     } catch (err) {
+        
       setResult({ ok: false, msg: "❌ Error: " + err.message });
     } finally {
+        
       setLoading(false);
     }
   };
@@ -84,6 +89,7 @@ export default function ContactForm() {
         className="w-full border rounded-md px-3 py-2"
         required
       />
+       
 
       <button
         type="submit"
