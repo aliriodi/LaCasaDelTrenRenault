@@ -10,16 +10,33 @@ export async function getGmailTransporter() {
 
   const accessToken = await oAuth2Client.getAccessToken();
 
+  // return nodemailer.createTransport({
+  //   service: "gmail",
+  //   auth: {
+  //     type: "OAuth2",
+  //     user: process.env.GMAIL_USER,   // MISMA cuenta que autorizaste
+  //     clientId: process.env.GOOGLE_CLIENT_ID,
+  //    // pass: process.env.MAIL_PASSWD,            
+  //     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  //     refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+  //     accessToken: accessToken?.token || "",
+  //   },
+  // });
+
   return nodemailer.createTransport({
-    service: "gmail",
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // STARTTLS
     auth: {
-      type: "OAuth2",
-      user: process.env.GMAIL_USER,   // MISMA cuenta que autorizaste
+      type: 'OAuth2',
+      user: process.env.GMAIL_USER,
       clientId: process.env.GOOGLE_CLIENT_ID,
-      pass: process.env.MAIL_PASSWD,            
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
       accessToken: accessToken?.token || "",
     },
+    logger: false,
+    debug: false,
   });
+
 }
