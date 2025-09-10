@@ -9,7 +9,7 @@ export default function ContactForm() {
   });
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
-  const [MAIL, setMail] = useState(null);
+  //const [MAIL, setMail] = useState(null);
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -24,8 +24,8 @@ export default function ContactForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          to: process.env.NEXT_PUBLIC_CONTACT_TO || form.email , // opcional: usa un .env público para el destino
-          subject: `Nuevo mensaje de ${form.name}`,
+          to: [GMAIL_USER , form.email ], // opcional: usa un .env público para el destino
+          subject: `Gracias por contactarnos ${form.name}`,
           html: `
             <h2>Contacto desde La Casa del Tren Renault</h2>
             <p><b>Nombre:</b> ${form.name}</p>
