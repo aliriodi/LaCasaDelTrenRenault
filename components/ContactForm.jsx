@@ -82,7 +82,7 @@ export default function ContactForm() {
 
       <textarea
         name="message"
-        placeholder="Tu mensaje"
+        placeholder="Tu requerimiento"
         value={form.message}
         onChange={handleChange}
         rows={4}

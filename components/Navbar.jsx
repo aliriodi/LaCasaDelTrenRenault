@@ -23,7 +23,7 @@ const Navbar = () => {
           <li><Link href="/#Inicio"    className="text-yellowPrimary hover:text-yellowThirth font-extrabold">Inicio</Link></li>
           <li><Link href="/products/Renault" className="text-yellowPrimary hover:text-yellowThirth font-extrabold">Productos</Link></li>
           <li><Link href="/#Servicios" className="text-yellowPrimary hover:text-yellowThirth font-extrabold">Servicios</Link></li>
-          <li><Link href="/#Contacto"  className="text-yellowPrimary hover:text-yellowThirth font-extrabold">Contacto</Link></li>
+          <li><Link href="/contacto"  className="text-yellowPrimary hover:text-yellowThirth font-extrabold">Contacto</Link></li>
         </ul>
       </div>
 
