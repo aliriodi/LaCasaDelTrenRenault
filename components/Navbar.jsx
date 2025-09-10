@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react"; // o usa íconos SVG normales si no tenés lucide-react
 import Link from "next/link";
+import CartButton from "@/components/context/CartButton";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
@@ -24,6 +25,7 @@ const Navbar = () => {
           <li><Link href="/products/Renault" className="text-yellowPrimary hover:text-yellowThirth font-extrabold">Productos</Link></li>
           <li><Link href="/#Servicios" className="text-yellowPrimary hover:text-yellowThirth font-extrabold">Servicios</Link></li>
           <li><Link href="/contacto"  className="text-yellowPrimary hover:text-yellowThirth font-extrabold">Contacto</Link></li>
+          <li><CartButton onClick={() => alert('Hola') /* abrir modal de carrito o ir a /checkout */ } /></li>
         </ul>
       </div>
 
