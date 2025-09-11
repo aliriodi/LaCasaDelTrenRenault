@@ -14,7 +14,8 @@ const Navbar = () => {
 
         {/* Botón hamburguesa */}
         <div className="md:hidden">
-          <button onClick={() => setOpen(!open)}>
+          <CartButton onClick={() => alert('Hola') /* abrir modal de carrito o ir a /checkout */ } />
+          <button className='pl-4' onClick={() => setOpen(!open)}>
             {open ? <X className="text-yellowPrimary  w-6 h-6 stroke-[3] transition-transform duration-200 ease-in-out hover:scale-120" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
