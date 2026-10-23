@@ -22,9 +22,14 @@ export default function CheckoutPage() {
   if (!mounted) return null;
 
   const onChange = (e: any) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
+  function EvalItems() {
+    if(Array.isArray(items)){return items}
+    else {return [] }
+  }
 
   const submit = async () => {
-    if (!form.email || !form.name || items.length === 0) {
+   
+    if (!form.email || !form.name || EvalItems().length === 0) {
       alert("Completa nombre, email y agrega productos al carrito.");
       return;
     }
@@ -61,10 +66,10 @@ export default function CheckoutPage() {
 
         {/* Items */}
         <div className="border rounded p-3 space-y-3">
-          {items.length === 0 ? (
+          {EvalItems().length === 0 ? (
             <p>Tu carrito está vacío.</p>
           ) : (
-            items.map((it) => (
+            EvalItems().map((it) => (
               <div key={it.id + (it.variant || "")} className="flex items-center gap-3">
                 {it.image && <img src={it.image} alt={it.name} className="w-16 h-16 object-cover rounded" />}
                 <div className="flex-1">
