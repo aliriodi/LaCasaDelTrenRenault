@@ -235,7 +235,7 @@ export default function RifaTresDigitos() {
         className="panel"
       >
         <header><span className="etiqueta"><b>SORTEO</b> </span><h1>AGUILAS DE CORDOBA</h1>
-          <p>Centenas, decenas y unidades. Solo participan boletos habilitados.</p></header>
+          <p><b> Solo participan boletos habilitados.</b></p></header>
         <div className="resumen"><span><b>{activos.length}</b> participando</span>
           <span><b>{estado.historial.length}</b> premiados</span></div>
         <div className="tambores" aria-hidden="true">{digitos.map((d, i) => (
