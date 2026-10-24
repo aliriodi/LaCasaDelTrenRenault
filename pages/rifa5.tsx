@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-
+import { FaWhatsapp ,  FaInstagram} from "react-icons/fa";
 // Sustituye estos EJEMPLOS por tus boletos. Conserva numero como texto.
 // true = vendido y habilitado; false = no participa.
 // Puedes agregar teléfono, comprador u otros campos.
@@ -39,6 +39,7 @@ const BOLETOS_INICIALES = [
   { numero: "352", juega: true, nombre: "Marcelo Bertone" },
   { numero: "353", juega: true, nombre: "Angeles Moscaro" },
   { numero: "354", juega: true, nombre: "Daniel Martinez" },
+  { numero: "324", juega: true, nombre: "Alejandro Diaz" },
 ];
 // Cambia este identificador al comenzar una rifa DIFERENTE.
 const RIFA_ID = "mi-rifa-001";
@@ -259,7 +260,46 @@ export default function RifaTresDigitos() {
         {/* <p className="nota">Datos de ejemplo: reemplaza BOLETOS_INICIALES antes de tu rifa. */}
           {/* El progreso se guarda en este navegador. Usa una sola pestaña para realizar el sorteo.</p> */}
       </section>
-      <aside className="panel"><h2>Boletos</h2><div className="lista">{estado.boletos.map(b => (
+      <aside className="panel">
+  
+<div className="credito">
+  <span>Elaborado por</span>
+
+  <div className="credito-fila">
+    <img
+      src="https://res.cloudinary.com/dvy9qircy/image/upload/v1792861676/forex/forex_academy_professional_logorquicomaj.png"
+      alt="Arquicom AJ"
+      className="logo-arquicom"
+    />
+
+    <div className="credito-contactos">
+      <a
+        className="contacto-instagram"
+        href="https://www.instagram.com/arquicom_aj/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaInstagram size={20} />
+        <span>@arquicom_aj</span>
+      </a>
+
+      <a
+        className="contacto-whatsapp"
+        href="https://wa.me/5493516132710"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaWhatsapp size={20} />
+        <span>3516132710</span>
+      </a>
+    </div>
+  </div>
+</div>
+<br/>
+        
+        <h2>Boletos</h2><div className="lista">
+      
+        {estado.boletos.map(b => (
         <div className="boleto" key={b.numero}><b>{b.numero}</b>
           <span>{b.juega ? "Participa" : estado.historial.some(h => h.numero === b.numero) ? "Premiado" : "No participa"}</span></div>
       ))}</div><h2>Ganadores</h2>{estado.historial.length === 0 ? <p>Aún no hay ganadores.</p>
@@ -289,6 +329,58 @@ export default function RifaTresDigitos() {
         
         button:hover:not(:disabled) {
           background: rgba(248, 206, 102, 0.75);
+        }
+        .credito {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          margin-top: 28px;
+          padding-top: 18px;
+          border-top: 1px solid #33435d;
+          color: #acbdd6;
+          font-size: 13px;
+        }
+        
+        .credito-fila {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+        }
+        
+        .logo-arquicom {
+          display: block;
+          width: 80px;
+          height: auto;
+          border-radius: 10px;
+          flex-shrink: 0;
+        }
+        
+        .credito-contactos {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        
+        .credito-contactos a {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          text-decoration: none;
+        }
+        
+        .credito-contactos .contacto-instagram {
+          color: #e1306c;
+        }
+        
+        .credito-contactos .contacto-whatsapp {
+          color: #25d366;
+        }
+        
+        .credito-contactos a:hover {
+          text-decoration: underline;
         }
       `}</style>
        <button
