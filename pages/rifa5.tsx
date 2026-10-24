@@ -198,12 +198,21 @@ export default function RifaTresDigitos() {
   };
 
   return (
+   
     <main
       className="rifa"
-      style={{ backgroundImage: `linear-gradient(rgba(11,18,32,0.35), rgba(11,18,32,0.35)), url("${imagen}")` }}
+      // style={{ backgroundImage: `linear-gradient(rgba(11,18,32,0.35), rgba(11,18,32,0.35)), url("${imagen}")` }}
     >
-      <section className="panel">
-        <header><span className="etiqueta">SORTEO DE TRES DÍGITOS</span><h1>La suerte tiene número</h1>
+      <section 
+      style={{
+        backgroundImage: `linear-gradient(rgba(11,18,32,0.55),rgba(11,18,32,0.75)),url("${imagen}")`,
+        backgroundSize: "contain",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat", }}
+      
+        className="panel"
+      >
+        <header><span className="etiqueta"><b>SORTEO</b> </span><h1>AGUILAS DE CORDOBA</h1>
           <p>Centenas, decenas y unidades. Solo participan boletos habilitados.</p></header>
         <div className="resumen"><span><b>{activos.length}</b> participando</span>
           <span><b>{estado.historial.length}</b> premiados</span></div>
@@ -216,16 +225,16 @@ export default function RifaTresDigitos() {
         ))}</div>
         <p className="estado" role="status" aria-live="polite">{girando
           ? `Prefijo: ${prefijo || "—"} · ${candidatos.length} boletos posibles · Deteniendo ${["centenas", "decenas", "unidades"][posicion]}`
-          : ganador ? `¡Ganó el ${ganador.numero}!` : "Listo para el próximo premio"}</p>
+          : <b>{ganador ? `¡Ganó el ${ganador.numero}!` : "Listo para el próximo premio"}</b>}</p>
         {error && <p className="error" role="alert">{error}</p>}
-        <button onClick={sortear} disabled={!listo || girando || !activos.length}>
+        <br/><button onClick={sortear} disabled={!listo || girando || !activos.length}>
           {girando ? "Sorteando…" : listo && !activos.length ? "No quedan boletos" : "Sortear premio"}</button>
          
         {ganador && <div className="ganador"><small>BOLETO GANADOR</small><strong>{ganador.numero}</strong>
           <span>{typeof ganador.nombre === "string" ? ganador.nombre : "¡Felicitaciones!"}</span>
           <p>Ya quedó excluido del próximo sorteo.</p></div>}
-        <p className="nota">Datos de ejemplo: reemplaza BOLETOS_INICIALES antes de tu rifa.
-          El progreso se guarda en este navegador. Usa una sola pestaña para realizar el sorteo.</p>
+        {/* <p className="nota">Datos de ejemplo: reemplaza BOLETOS_INICIALES antes de tu rifa. */}
+          {/* El progreso se guarda en este navegador. Usa una sola pestaña para realizar el sorteo.</p> */}
       </section>
       <aside className="panel"><h2>Boletos</h2><div className="lista">{estado.boletos.map(b => (
         <div className="boleto" key={b.numero}><b>{b.numero}</b>
@@ -238,6 +247,17 @@ export default function RifaTresDigitos() {
       <style jsx>{`
         .rifa{min-height:100vh;min-height:100dvh;background-color:#0b1220;background-size:cover;background-position:center;background-repeat:no-repeat;color:#e8eef9;padding:32px 16px;display:grid;grid-template-columns:minmax(0,760px) minmax(240px,340px);gap:24px;justify-content:center;align-items:start;font-family:system-ui,sans-serif;box-sizing:border-box}
         .panel{background:rgba(19,31,51,0.85);border:1px solid #2c3c56;border-radius:24px;padding:28px;min-width:0}header{text-align:center}.etiqueta{color:#f8ce66;font-size:11px;letter-spacing:3px}h1{font-size:clamp(25px,4vw,38px);margin:16px 0}p{color:#acbdd6;line-height:1.6}h2{font-size:19px;margin:4px 0 18px}.resumen{display:flex;justify-content:center;gap:28px;margin:28px 0;color:#acbdd6}.resumen b{color:white}.tambores{display:flex;gap:12px;justify-content:center}.tambor{flex:1;max-width:180px;min-width:0;text-align:center}small{font-size:10px;letter-spacing:1px;color:#b8c9e2}.ventana{height:clamp(110px,22vw,170px);margin:12px 0;background:linear-gradient(#060c16,#22344f 50%,#060c16);border:2px solid #41526e;border-radius:18px;overflow:hidden;display:grid;place-items:center}.ventana span{display:block;font-size:clamp(60px,12vw,110px);font-weight:800;font-variant-numeric:tabular-nums;color:#f8ce66}.gira .ventana span{animation:rodar 75ms linear infinite}.fijo .ventana{border-color:#f8ce66}em{display:block;min-height:20px;color:#aac7a8;font-size:12px;font-style:normal}.estado{text-align:center;min-height:26px}button{width:100%;background:#f8ce66;color:#142039;font-size:18px;font-weight:750;border:0;border-radius:14px;padding:17px;cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}.ganador{text-align:center;border:1px solid #4b9d82;background:#143b35;border-radius:18px;margin-top:24px;padding:22px}.ganador strong{display:block;font-size:70px;letter-spacing:10px;color:#f8ce66}.ganador span{display:block}.ganador p{margin-bottom:0}.nota{font-size:12px;margin-top:24px}.lista{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:28px;max-height:400px;overflow:auto}.boleto{border:1px solid #33435d;padding:10px;border-radius:10px}.boleto b{font-size:22px;letter-spacing:2px}.boleto span{display:block;font-size:11px;color:#acbdd6}li{padding:8px 0;font-size:13px;line-height:1.5}.error{background:#522736;color:#ffe1e1;border-radius:10px;padding:12px}@keyframes rodar{from{transform:translateY(-16px);filter:blur(1px)}to{transform:translateY(16px);filter:blur(1px)}}@media(max-width:800px){.rifa{grid-template-columns:minmax(0,620px)}.panel{padding:20px}}@media(prefers-reduced-motion:reduce){.gira .ventana span{animation:none}}
+        .ventana {background: rgba(11, 18, 32, 0.4);}
+        button {
+          background: rgba(248, 206, 102, 0.55);
+          color: #fff;
+          border: 1px solid #f8ce66;
+          text-shadow: 0 1px 3px #000;
+        }
+        
+        button:hover:not(:disabled) {
+          background: rgba(248, 206, 102, 0.75);
+        }
       `}</style>
        <button
   type="button"
@@ -248,5 +268,6 @@ export default function RifaTresDigitos() {
   Reiniciar rifa
 </button>
     </main>
+    
   );
 }
