@@ -5,18 +5,40 @@ import { useEffect, useRef, useState } from "react";
 // true = vendido y habilitado; false = no participa.
 // Puedes agregar teléfono, comprador u otros campos.
 const imagen = "https://res.cloudinary.com/dvy9qircy/image/upload/v1792797066/forex/forex_academy_professional_logoAGUILAS.jpg"
+// const BOLETOS_INICIALES = [
+//   { numero: "007", juega: true, nombre: "Participante de ejemplo A" },
+//   { numero: "008", juega: true, nombre: "Participante de ejemplo A" },
+//   { numero: "012", juega: true, nombre: "Participante de ejemplo B" },
+//   { numero: "013", juega: true, nombre: "Participante de ejemplo A" },
+//   { numero: "019", juega: false, nombre: "No vendido" },
+//   { numero: "125", juega: true, nombre: "Participante de ejemplo C" },
+//   { numero: "128", juega: true, nombre: "Participante de ejemplo D" },
+//   { numero: "247", juega: true, nombre: "Participante de ejemplo E" },
+//   { numero: "249", juega: false, nombre: "No vendido" },
+//   { numero: "580", juega: true, nombre: "Participante de ejemplo F" },
+//   { numero: "999", juega: true, nombre: "Participante de ejemplo G" },
+// ];
 const BOLETOS_INICIALES = [
-  { numero: "007", juega: true, nombre: "Participante de ejemplo A" },
-  { numero: "008", juega: true, nombre: "Participante de ejemplo A" },
-  { numero: "012", juega: true, nombre: "Participante de ejemplo B" },
-  { numero: "013", juega: true, nombre: "Participante de ejemplo A" },
-  { numero: "019", juega: false, nombre: "No vendido" },
-  { numero: "125", juega: true, nombre: "Participante de ejemplo C" },
-  { numero: "128", juega: true, nombre: "Participante de ejemplo D" },
-  { numero: "247", juega: true, nombre: "Participante de ejemplo E" },
-  { numero: "249", juega: false, nombre: "No vendido" },
-  { numero: "580", juega: true, nombre: "Participante de ejemplo F" },
-  { numero: "999", juega: true, nombre: "Participante de ejemplo G" },
+  { numero: "321", juega: true, nombre: "Adriana Diaz" },
+  { numero: "329", juega: true, nombre: "Adriana Diaz" },
+  { numero: "322", juega: true, nombre: "Jonny Franco" },
+  { numero: "345", juega: true, nombre: "Jonny Franco" },
+  { numero: "333", juega: true, nombre: "Genexis Zambrano" },
+  { numero: "356", juega: true, nombre: "Arella Franco" },
+  { numero: "346", juega: true, nombre: "Jenny Franco" },
+  { numero: "358", juega: true, nombre: "Lisbhet Romero" },
+  { numero: "323", juega: true, nombre: "Benja Carigaris" },
+  { numero: "337", juega: true, nombre: "Benja Carigaris" },
+  { numero: "357", juega: true, nombre: "Emiliano Franco" },
+  { numero: "334", juega: true, nombre: "Gustavo Salva" }, 
+  { numero: "355", juega: true, nombre: "Gustavo Salva" },
+  { numero: "343", juega: true, nombre: "Sofia Luna" },
+  { numero: "331", juega: true, nombre: "Mica Acevedo" },
+  { numero: "344", juega: true, nombre: "Mica Acevedo" }, 
+  { numero: "327", juega: true, nombre: "Arella Franco" },
+  { numero: "352", juega: true, nombre: "Marcelo Bertone" },
+  { numero: "353", juega: true, nombre: "Angeles Moscaro" },
+  { numero: "354", juega: true, nombre: "Daniel Martinez" },
 ];
 // Cambia este identificador al comenzar una rifa DIFERENTE.
 const RIFA_ID = "mi-rifa-001";
@@ -232,7 +254,8 @@ export default function RifaTresDigitos() {
          
         {ganador && <div className="ganador"><small>BOLETO GANADOR</small><strong>{ganador.numero}</strong>
           <span>{typeof ganador.nombre === "string" ? ganador.nombre : "¡Felicitaciones!"}</span>
-          <p>Ya quedó excluido del próximo sorteo.</p></div>}
+          {/* <p>Ya quedó excluido del próximo sorteo.</p> */}
+          </div>}
         {/* <p className="nota">Datos de ejemplo: reemplaza BOLETOS_INICIALES antes de tu rifa. */}
           {/* El progreso se guarda en este navegador. Usa una sola pestaña para realizar el sorteo.</p> */}
       </section>
@@ -240,7 +263,15 @@ export default function RifaTresDigitos() {
         <div className="boleto" key={b.numero}><b>{b.numero}</b>
           <span>{b.juega ? "Participa" : estado.historial.some(h => h.numero === b.numero) ? "Premiado" : "No participa"}</span></div>
       ))}</div><h2>Ganadores</h2>{estado.historial.length === 0 ? <p>Aún no hay ganadores.</p>
-        : <ol>{estado.historial.map(h => <li key={h.numero}><b>{h.numero}</b> · {new Date(h.fecha).toLocaleString("es")}</li>)}</ol>}</aside>
+        : <ol>{estado.historial.map(h => {
+          const boleto = estado.boletos.find(b => b.numero === h.numero);
+    
+          return (
+            <li key={h.numero}>
+              <b>{h.numero}</b> · {boleto?.nombre ?? "Sin nombre"}
+            </li>
+          );
+        })}</ol>}</aside>
       <style jsx global>{`
         html, body { margin: 0; padding: 0; min-height: 100%; }
       `}</style>
