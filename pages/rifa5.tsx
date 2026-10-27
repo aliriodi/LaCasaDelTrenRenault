@@ -1298,6 +1298,7 @@ export const BOLETOS_INICIALES = [
   { numero: "682", juega: true, nombre: "carmenleoonett", responsable: "Carolina" },
   { numero: "683", juega: true, nombre: "Alfredo Odreman", responsable: "Carolina" },
   { numero: "684", juega: true, nombre: "marylianys silva", responsable: "Carolina" },
+  { numero: "685", juega: true, nombre: "marcos sanchez", responsable: "Carolina" },
   { numero: "686", juega: true, nombre: "marcos sanchez", responsable: "Carolina" },
   { numero: "687", juega: true, nombre: "Alfredo Odreman", responsable: "Carolina" },
   { numero: "688", juega: true, nombre: "romer matute", responsable: "Carolina" },
