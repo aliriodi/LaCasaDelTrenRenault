@@ -25,7 +25,7 @@ type Diferencia = {
     {responsable:"Jenny Franco",numero:"0",observacion:"Ninguna"},
     {responsable:"Johana",numero:"0",observacion:"Ninguna"},
     {responsable:"Kenimar",numero:"0",observacion:"Ninguna"},
-    {responsable:"Kimberli",numero:"0",observacion:"Ninguna"},
+    {responsable:"Kimberly",numero:"0",observacion:"Ninguna"},
     {responsable:"Lhismar",numero:"0",observacion:"Ninguna"},
     {responsable:"Mariana y Krisbel",numero:"+1",observacion:"En los datos pasados el 475 esta vendido y en drive el 475 esta en rojo"},
     {responsable:"Marie",numero:"0",observacion:"Ninguna"},
